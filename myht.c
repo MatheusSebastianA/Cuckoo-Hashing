@@ -10,6 +10,7 @@ int main(){
     inicializa_hash(hash);
 
     while(!feof(stdin)){
+        opcao = '\0';
         scanf(" %c %d", &opcao, &chave);
 
         if(opcao == 'i')
@@ -18,11 +19,8 @@ int main(){
         else if(opcao == 'r')
             remove_chave(chave, hash);
 
-        else{
-            printf("Argumento %c passado não é válido\n", opcao);
+        else if(opcao != '\0')
             return 1;
-        }
-
     } 
     
     imprime_hash(hash);
