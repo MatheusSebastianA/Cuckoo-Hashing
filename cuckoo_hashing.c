@@ -93,10 +93,6 @@ void remove_chave(int chave, struct nodo hash[TAM]){
     return;
 }
 
-int menor_chave(struct nodo hash[TAM], int pos){
-    return 1;
-}
-
 void imprime_hash(struct nodo hash[TAM]){
     int menor, pos_menor, i, pos, cont = 0;
     int vet_pos[TAM];
