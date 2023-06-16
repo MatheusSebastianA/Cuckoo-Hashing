@@ -62,8 +62,9 @@ void insere_chave(int chave, struct nodo hash[TAM]){
     }
 
     if(hash[pos1].null == 0){
-        
-            
+        if(chave == hash[pos1].chave)
+            return;
+
         pos2 = h2(hash[pos1].chave) + MAX;
         hash[pos2].chave = hash[pos1].chave;
         hash[pos2].null = 0;
@@ -92,15 +93,48 @@ void remove_chave(int chave, struct nodo hash[TAM]){
     return;
 }
 
+int menor_chave(struct nodo hash[TAM], int pos){
+    return 1;
+}
+
 void imprime_hash(struct nodo hash[TAM]){
-    for(int pos = TAM - 1; pos >= 0; pos--){
-        if(hash[pos].null != 1 && hash[pos].excluido != 1){
-            if(pos <= 10)
-                printf("%d,T1,%d\n", hash[pos].chave, pos);
-            else
-                printf("%d,T2,%d\n", hash[pos].chave, pos - MAX);
+    int menor, pos_menor, i, pos, cont = 0;
+    int vet_pos[TAM];
+    struct nodo aux[TAM];
+    inicializa_hash(aux);
+
+    for(i = 0; i < TAM; i++){
+        menor = -1;
+        cont = 0;
+        for(pos = 0; pos < TAM; pos++){
+            if(hash[pos].null != 1 && hash[pos].excluido != 1){
+                if(cont == 0 || menor > hash[pos].chave){
+                    menor = hash[pos].chave;
+                    pos_menor = pos;
+                    cont++;
+                }
+            }
+        }
+        if(menor != -1){
+            remove_chave(menor, hash);
+            aux[i].chave = menor;
+            aux[i].excluido = 0;
+            aux[i].null = 0;
+            vet_pos[i] = pos_menor;
         }
     }
+
+
+
+    for(i = 0; i < TAM; i++){
+        if(aux[i].null != 1 && aux[i].excluido != 1){
+            printf("%d,", aux[i].chave);
+            if(vet_pos[i] <= 10)
+                printf("T1,%d\n", vet_pos[i]);
+            else
+                printf("T2,%d\n", vet_pos[i] - MAX);
+        }
+    } 
 
     return;
 }
