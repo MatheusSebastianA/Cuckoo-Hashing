@@ -14,4 +14,4 @@ A função de busca é feita analisando 3 casos diferentes:
     .Posição recebe o resultado da função h1 da chave em procura, caso o "nodo" na posição tenha chave igual à procurada retorna em qual posição o valor foi encontrado no vetor/tabela hash.  
     .Posição recebe o resultado da função h1 da chave em procura, caso o "nodo" não seja nulo e não tenha a chave procurada, ela pode estar na segunda tabela. Posição recebe o resultado da função h2 da chave em procura + 11, já que temos apenas um vetor com 22 posições, onde a posição na tabela 2 é 11 + h2. Assim, verifica se a chave na posição da segunda tabela é igual à procurada, se for retorna a posição, se não retorna "-1".
   
-  
+A inclusão é feita 
