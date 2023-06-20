@@ -8,7 +8,8 @@
 double floor(double x){
     if (x >= 0) {
         return (double)((long)x);
-    } else {
+    } 
+    else {
         double t = (double)((long)x - 1);
         return (t == x) ? x : t;
     }
@@ -62,7 +63,7 @@ void insere_chave(int chave, struct nodo hash[TAM]){
     }
 
     if(hash[pos1].null == 0){
-        if(chave == hash[pos1].chave)
+        if(busca(chave, hash) != -1)
             return;
 
         pos2 = h2(hash[pos1].chave) + MAX;
